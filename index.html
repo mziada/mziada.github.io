@@ -1,109 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissors</title>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-        .choices {
-            margin-top: 20px;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <h1>Rock, Paper, Scissors</h1>
-    <div>
-        <label for="user-choice">What do you choose?</label>
-        <select id="user-choice">
-            <option value="0">Rock</option>
-            <option value="1">Paper</option>
-            <option value="2">Scissors</option>
-        </select>
-        <button onclick="playGame()">Play!</button>
-    </div>
-    <div class="choices">
-        <p>Your Choice:</p>
-        <pre id="user-image"></pre>
-        <p>Computer's Choice:</p>
-        <pre id="computer-image"></pre>
-    </div>
-    <div class="result" id="result"></div>
-
-    <py-script>
-from random import randint
-
-rock = '''
-    _______
----'   ____)
-      (_____)
-      (_____)
-      (____)
----.__(___)
-'''
-
-paper = '''
-    _______
----'   ____)____
-          ______)
-          _______)
-         _______)
----.__________)
-'''
-
-scissors = '''
-    _______
----'   ____)____
-          ______)
-       __________)
-      (____)
----.__(___)
-'''
-
-game_images = [rock, paper, scissors]
-
-def play_game():
-    # Get user choice
-    user_choice = int(Element("user-choice").value)
-    
-    # Display user's choice image
-    user_image_element = Element("user-image")
-    user_image_element.write(game_images[user_choice])
-    
-    # Generate computer's choice
-    computer_choice = randint(0, 2)
-    
-    # Display computer's choice image
-    computer_image_element = Element("computer-image")
-    computer_image_element.write(game_images[computer_choice])
-    
-    # Determine the result
-    result_element = Element("result")
-    if user_choice == computer_choice:
-        result_element.write("It's a Draw!")
-    elif (user_choice == 0 and computer_choice == 2) or \
-         (user_choice == 1 and computer_choice == 0) or \
-         (user_choice == 2 and computer_choice == 1):
-        result_element.write("You Win!")
-    else:
-        result_element.write("You Lose!")
-
-    </py-script>
-    <script>
-        function playGame() {
-            pyscript.interpreter.run('play_game()');
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/main.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400italic,700,700italic&amp;subset=latin,greek,cyrillic"
+    rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
     </script>
+
+  <title>Demo</title>
+</head>
+
+<body>
+  <div class="terminal" id="Terminal">
+    <div class="console-line">Click <button id="run-button">Run</button> to play Rock Paper Scissors.</div>
+    <div class="content" id="Content"></div>
+
+  </div>
 </body>
+<script src="./index.js"></script>
+
 </html>
